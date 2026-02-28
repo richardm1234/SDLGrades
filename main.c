@@ -2,7 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+void initRect(SDL_Rect *rect, int x, int y, int w, int h) {
+    rect->x = x;
+    rect->y = y;
+    rect->w = w;
+    rect->h = h;
+}
 
 int main() {
     SDL_InitSubSystem(SDL_INIT_VIDEO);
@@ -14,11 +19,8 @@ int main() {
 
     SDL_Rect *rect = malloc(sizeof(SDL_Rect));
     if (!rect) return 1;
-
-    rect->x = 0;
-    rect->y = 0;
-    rect->w = 10;
-    rect->h = 10;
+    initRect(rect, 0, 0, 100, 100);
+    
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderFillRect(renderer, rect);
     SDL_RenderPresent(renderer);
